@@ -40,10 +40,10 @@ struct ChartListView: View {
             }
             .navigationTitle("majdata.net")
             .navigationBarTitleDisplayMode(.large)
-            .searchable(
-                text: $viewModel.searchInput,
-                prompt: "Search charts..."
-            )
+            // .searchable(
+            //     text: $viewModel.searchInput,
+            //     prompt: "Search charts..."
+            // )
             .onChange(of: viewModel.searchInput) { _ in
                 Task {
                     try? await Task.sleep(nanoseconds: 500_000_000) // 0.5 seconds
@@ -71,7 +71,7 @@ struct ChartListView: View {
                         }
                         
                         Menu {
-                            ForEach([MaiDataNet.Sort.none, .like, .comment, .play], id: \.self) { sort in
+                            ForEach([MajdataNet.Sort.none, .like, .comment, .play], id: \.self) { sort in
                                 Button(action: {
                                     viewModel.selectedSort = sort
                                     Task {

@@ -12,13 +12,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A284DE92D92CEDB007D9A53 /* MaidataNetCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MaidataNetCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A284DE92D92CEDB007D9A53 /* MajdataNetCompanion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MajdataNetCompanion.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		3A284DEB2D92CEDB007D9A53 /* MaidataNetCompanion */ = {
+		3A284DEB2D92CEDB007D9A53 /* MajdataNetCompanion */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = MaidataNetCompanion;
+			path = MajdataNetCompanion;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -39,7 +39,7 @@
 		3A284DE02D92CEDB007D9A53 = {
 			isa = PBXGroup;
 			children = (
-				3A284DEB2D92CEDB007D9A53 /* MaidataNetCompanion */,
+				3A284DEB2D92CEDB007D9A53 /* MajdataNetCompanion */,
 				3A284DEA2D92CEDB007D9A53 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,7 +47,7 @@
 		3A284DEA2D92CEDB007D9A53 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3A284DE92D92CEDB007D9A53 /* MaidataNetCompanion.app */,
+				3A284DE92D92CEDB007D9A53 /* MajdataNetCompanion.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,9 +55,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3A284DE82D92CEDB007D9A53 /* MaidataNetCompanion */ = {
+		3A284DE82D92CEDB007D9A53 /* MajdataNetCompanion */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3A284DFA2D92CEDC007D9A53 /* Build configuration list for PBXNativeTarget "MaidataNetCompanion" */;
+			buildConfigurationList = 3A284DFA2D92CEDC007D9A53 /* Build configuration list for PBXNativeTarget "MajdataNetCompanion" */;
 			buildPhases = (
 				3A284DE52D92CEDB007D9A53 /* Sources */,
 				3A284DE62D92CEDB007D9A53 /* Frameworks */,
@@ -68,15 +68,15 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				3A284DEB2D92CEDB007D9A53 /* MaidataNetCompanion */,
+				3A284DEB2D92CEDB007D9A53 /* MajdataNetCompanion */,
 			);
-			name = MaidataNetCompanion;
+			name = MajdataNetCompanion;
 			packageProductDependencies = (
 				3A2400772D930C6A00AE38D0 /* Alamofire */,
 				3A24007E2D93118C00AE38D0 /* CachedAsyncImage */,
 			);
-			productName = MaidataNetCompanion;
-			productReference = 3A284DE92D92CEDB007D9A53 /* MaidataNetCompanion.app */;
+			productName = MajdataNetCompanion;
+			productReference = 3A284DE92D92CEDB007D9A53 /* MajdataNetCompanion.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -94,7 +94,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 3A284DE42D92CEDB007D9A53 /* Build configuration list for PBXProject "MaidataNetCompanion" */;
+			buildConfigurationList = 3A284DE42D92CEDB007D9A53 /* Build configuration list for PBXProject "MajdataNetCompanion" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -112,7 +112,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3A284DE82D92CEDB007D9A53 /* MaidataNetCompanion */,
+				3A284DE82D92CEDB007D9A53 /* MajdataNetCompanion */,
 			);
 		};
 /* End PBXProject section */
@@ -257,10 +257,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = MaidataNetCompanion/MaidataNetCompanion.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MajdataNetCompanion/MajdataNetCompanion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MaidataNetCompanion/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MajdataNetCompanion/Preview Content\"";
 				DEVELOPMENT_TEAM = SY8Y8N4TPM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -281,7 +281,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.dxrating.MaidataNetCompanion.MaidataNetCompanion;
+				PRODUCT_BUNDLE_IDENTIFIER = net.dxrating.MajdataNetCompanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -298,10 +298,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = MaidataNetCompanion/MaidataNetCompanion.entitlements;
+				CODE_SIGN_ENTITLEMENTS = MajdataNetCompanion/MajdataNetCompanion.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"MaidataNetCompanion/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"MajdataNetCompanion/Preview Content\"";
 				DEVELOPMENT_TEAM = SY8Y8N4TPM;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -322,7 +322,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.dxrating.MaidataNetCompanion.MaidataNetCompanion;
+				PRODUCT_BUNDLE_IDENTIFIER = net.dxrating.MajdataNetCompanion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -337,7 +337,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3A284DE42D92CEDB007D9A53 /* Build configuration list for PBXProject "MaidataNetCompanion" */ = {
+		3A284DE42D92CEDB007D9A53 /* Build configuration list for PBXProject "MajdataNetCompanion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A284DF82D92CEDC007D9A53 /* Debug */,
@@ -346,7 +346,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3A284DFA2D92CEDC007D9A53 /* Build configuration list for PBXNativeTarget "MaidataNetCompanion" */ = {
+		3A284DFA2D92CEDC007D9A53 /* Build configuration list for PBXNativeTarget "MajdataNetCompanion" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3A284DFB2D92CEDC007D9A53 /* Debug */,

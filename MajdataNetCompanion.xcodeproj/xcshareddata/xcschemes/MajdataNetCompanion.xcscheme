@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3A284DE82D92CEDB007D9A53"
-               BuildableName = "MaidataNetCompanion.app"
-               BlueprintName = "MaidataNetCompanion"
-               ReferencedContainer = "container:MaidataNetCompanion.xcodeproj">
+               BuildableName = "MajdataNetCompanion.app"
+               BlueprintName = "MajdataNetCompanion"
+               ReferencedContainer = "container:MajdataNetCompanion.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -45,9 +45,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3A284DE82D92CEDB007D9A53"
-            BuildableName = "MaidataNetCompanion.app"
-            BlueprintName = "MaidataNetCompanion"
-            ReferencedContainer = "container:MaidataNetCompanion.xcodeproj">
+            BuildableName = "MajdataNetCompanion.app"
+            BlueprintName = "MajdataNetCompanion"
+            ReferencedContainer = "container:MajdataNetCompanion.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3A284DE82D92CEDB007D9A53"
-            BuildableName = "MaidataNetCompanion.app"
-            BlueprintName = "MaidataNetCompanion"
-            ReferencedContainer = "container:MaidataNetCompanion.xcodeproj">
+            BuildableName = "MajdataNetCompanion.app"
+            BlueprintName = "MajdataNetCompanion"
+            ReferencedContainer = "container:MajdataNetCompanion.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

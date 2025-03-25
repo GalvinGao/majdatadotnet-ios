@@ -2,7 +2,7 @@ import SwiftUI
 import CachedAsyncImage
 
 struct ChartDetailView: View {
-    let chart: MaiDataNet.MaiChart
+    let chart: MajdataNet.MaiChart
     let namespace: Namespace.ID
     @Environment(\.dismiss) private var dismiss
     

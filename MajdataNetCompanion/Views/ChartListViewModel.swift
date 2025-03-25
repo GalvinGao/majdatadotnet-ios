@@ -12,11 +12,11 @@ class ChartListViewModel: ObservableObject {
     }
 
     // MARK: - Published Properties
-    @Published private(set) var charts: [MaiDataNet.MaiChart] = []
+    @Published private(set) var charts: [MajdataNet.MaiChart] = []
     @Published private(set) var state: State = .idle
     @Published private(set) var hasMorePages = true
     @Published var searchInput: String = ""
-    @Published var selectedSort: MaiDataNet.Sort = .none
+    @Published var selectedSort: MajdataNet.Sort = .none
 
     // MARK: - Private Properties
     private var currentPage = 0
@@ -46,7 +46,7 @@ class ChartListViewModel: ObservableObject {
             state = .loading
 
             do {
-                let newCharts = try await MaiDataNet.fetchCharts(
+                let newCharts = try await MajdataNet.fetchCharts(
                     sort: selectedSort,
                     page: currentPage,
                     search: searchInput.isEmpty ? nil : searchInput
@@ -81,7 +81,7 @@ class ChartListViewModel: ObservableObject {
     }
 
     // MARK: - Helper Methods
-    func sortTitle(for sort: MaiDataNet.Sort) -> String {
+    func sortTitle(for sort: MajdataNet.Sort) -> String {
         switch sort {
         case .none: return "Latest"
         case .like: return "Most Liked"

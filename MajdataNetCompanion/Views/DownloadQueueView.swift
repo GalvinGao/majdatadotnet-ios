@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DownloadQueueView: View {
-    @ObservedObject var downloader = MaidataDownloader.shared
+    @ObservedObject var downloader = MNDownloader.shared
     @Environment(\.dismiss) private var dismiss
     @State private var showingFilePicker = false
     @State private var directoriesToSave: [URL] = []

@@ -1,8 +1,8 @@
 import Alamofire
 import Foundation
 
-// MARK: - MaiDataNet
-enum MaiDataNet {
+// MARK: - MajdataNet
+enum MajdataNet {
     // MARK: - Query Parameters
     enum Sort: String {
         case none = ""
@@ -56,7 +56,7 @@ enum MaiDataNet {
 }
 
 // MARK: - API
-extension MaiDataNet {
+extension MajdataNet {
     static func fetchCharts(
         sort: Sort = .none,
         page: Int = 0,
@@ -92,7 +92,7 @@ extension MaiDataNet {
 }
 
 // MARK: - Codable
-extension MaiDataNet.MaiChart: Decodable {
+extension MajdataNet.MaiChart: Decodable {
     enum CodingKeys: String, CodingKey {
         case id, title, artist, designer, description, levels, uploader, uploaderID, timestamp, hash
     }
@@ -107,10 +107,10 @@ extension MaiDataNet.MaiChart: Decodable {
         
         // Convert levels array to ChartLevel array
         let levelsArray = try container.decode([String?].self, forKey: .levels)
-        charts = zip(MaiDataNet.Difficulty.allCases, levelsArray)
+        charts = zip(MajdataNet.Difficulty.allCases, levelsArray)
             .compactMap { difficulty, level in
                 guard let level = level, !level.isEmpty else { return nil }
-                return MaiDataNet.ChartLevel(difficulty: difficulty, level: level)
+                return MajdataNet.ChartLevel(difficulty: difficulty, level: level)
             }
         
         uploader = try container.decode(String.self, forKey: .uploader)

@@ -2,13 +2,13 @@ import SwiftUI
 import CachedAsyncImage
 
 struct ChartCardView: View {
-    let chart: MaiDataNet.MaiChart
+    let chart: MajdataNet.MaiChart
     @State private var relativeTime: String = ""
     @State private var timer: Timer?
     @State private var isPressed = false
     @State private var isCompleted = false
     @State private var showOverlay = true
-    @ObservedObject private var downloader = MaidataDownloader.shared
+    @ObservedObject private var downloader = MNDownloader.shared
     @ObservedObject private var downloadHistory = DownloadHistory.shared
     var onShowDownloadQueue: () -> Void
     
@@ -112,7 +112,7 @@ struct ChartCardView: View {
                 onShowDownloadQueue()
             } else {
                 Task {
-                    try await MaidataDownloader.shared.addQueue(id: chart.id)
+                    try await MNDownloader.shared.addQueue(id: chart.id)
                 }
             }
         }
@@ -159,6 +159,8 @@ struct ChartCardView: View {
                         }
                     }
                 }
+                .animation(.easeOut(duration: 0.3), value: downloadItem.progress)
+                .animation(.easeOut(duration: 0.3), value: showOverlay)
             }
         }
         .onAppear {

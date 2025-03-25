@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-enum MaidataFileType: String {
+enum MNFileType: String {
     case track = "track"
     case chart = "chart"
     case image = "image"
@@ -44,7 +44,7 @@ enum MaidataFileType: String {
     }
 }
 
-class MaidataDownloadItem: ObservableObject, Identifiable {
+class MNDownloadItem: ObservableObject, Identifiable {
     let id: String
     @Published var title: String
     @Published var status: DownloadStatus = .queued
@@ -66,8 +66,8 @@ class MaidataDownloadItem: ObservableObject, Identifiable {
     }
 }
 
-class MaidataDownloader: ObservableObject {
-    static let shared = MaidataDownloader()
+class MNDownloader: ObservableObject {
+    static let shared = MNDownloader()
     
     static let FILENAME_MAP = [
         "track": "track.mp3",
@@ -90,8 +90,8 @@ class MaidataDownloader: ObservableObject {
         "video": 1.2
     ]
     
-    private let downloadQueue = DispatchQueue(label: "com.maidatanet.downloader", qos: .userInitiated)
-    @Published private(set) var downloadItems: [MaidataDownloadItem] = []
+    private let downloadQueue = DispatchQueue(label: "net.dxrating.MajdataNetCompanion.downloader", qos: .userInitiated)
+    @Published private(set) var downloadItems: [MNDownloadItem] = []
     private var activeDownloads: [String: Bool] = [:]
     
     private init() {}
@@ -106,7 +106,7 @@ class MaidataDownloader: ObservableObject {
         return String(name.map { invalidChars[$0] ?? $0 })
     }
     
-    private func parseMaidataTitle(from data: String, fallbackID: String) -> String {
+    private func parseMNTitle(from data: String, fallbackID: String) -> String {
         // Split by newlines and look for the title line
         let lines = data.components(separatedBy: .newlines)
         for line in lines {
@@ -119,7 +119,7 @@ class MaidataDownloader: ObservableObject {
         return fallbackID
     }
     
-    private func saveFile(from tempFileURL: URL, to fileURL: URL, fileType: MaidataFileType) throws {
+    private func saveFile(from tempFileURL: URL, to fileURL: URL, fileType: MNFileType) throws {
         let fileManager = FileManager.default
         
         // Remove existing file if it exists
@@ -132,11 +132,11 @@ class MaidataDownloader: ObservableObject {
         print("Successfully downloaded and saved \(fileType.filename)")
     }
     
-    private func downloadFile(id: String, fileType: MaidataFileType, downloadItem: MaidataDownloadItem) async throws -> URL {
+    private func downloadFile(id: String, fileType: MNFileType, downloadItem: MNDownloadItem) async throws -> URL {
         // Construct the download URL
         let urlString = "https://majdata.net/api3/api/maichart/\(id)/\(fileType.urlSubPath)"
         guard let url = URL(string: urlString) else {
-            throw NSError(domain: "MaidataNetCompanion", code: 5, userInfo: [NSLocalizedDescriptionKey: "Invalid URL for \(fileType.humanizedName)"])
+            throw NSError(domain: "MajdataNetCompanion", code: 5, userInfo: [NSLocalizedDescriptionKey: "Invalid URL for \(fileType.humanizedName)"])
         }
         
         print("Starting download for \(fileType.humanizedName) from \(urlString)")
@@ -148,41 +148,41 @@ class MaidataDownloader: ObservableObject {
         let (tempFileURL, response) = try await session.download(from: url)
         
         guard let httpResponse = response as? HTTPURLResponse else {
-            throw NSError(domain: "MaidataNetCompanion", code: 6, userInfo: [NSLocalizedDescriptionKey: "Invalid response for \(fileType.humanizedName)"])
+            throw NSError(domain: "MajdataNetCompanion", code: 6, userInfo: [NSLocalizedDescriptionKey: "Invalid response for \(fileType.humanizedName)"])
         }
         
         // Update progress based on completed files
         await MainActor.run {
-            downloadItem.progress = Double(downloadItem.downloadedFiles.count + 1) / Double(MaidataDownloader.FILENAME_MAP.count)
+            downloadItem.progress = Double(downloadItem.downloadedFiles.count + 1) / Double(MNDownloader.FILENAME_MAP.count)
             objectWillChange.send()
         }
         
         return tempFileURL
     }
     
-    private func processDownload(_ downloadItem: MaidataDownloadItem) async throws -> URL {
+    private func processDownload(_ downloadItem: MNDownloadItem) async throws -> URL {
         // Create a FileManager instance
         let fileManager = FileManager.default
         
         // Get the Documents directory
         guard let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            throw NSError(domain: "MaidataNetCompanion", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not access Documents directory"])
+            throw NSError(domain: "MajdataNetCompanion", code: 1, userInfo: [NSLocalizedDescriptionKey: "Could not access Documents directory"])
         }
         
         // First download and parse the chart file to get the title
         let chartURLString = "https://majdata.net/api3/api/maichart/\(downloadItem.id)/chart"
         guard let chartURL = URL(string: chartURLString) else {
-            throw NSError(domain: "MaidataNetCompanion", code: 2, userInfo: [NSLocalizedDescriptionKey: "Invalid chart URL"])
+            throw NSError(domain: "MajdataNetCompanion", code: 2, userInfo: [NSLocalizedDescriptionKey: "Invalid chart URL"])
         }
         
         // Create a dedicated session for the chart download
         let chartSession = URLSession(configuration: .default)
         let (chartData, _) = try await chartSession.data(from: chartURL)
         guard let chartString = String(data: chartData, encoding: .utf8) else {
-            throw NSError(domain: "MaidataNetCompanion", code: 3, userInfo: [NSLocalizedDescriptionKey: "Could not decode chart data"])
+            throw NSError(domain: "MajdataNetCompanion", code: 3, userInfo: [NSLocalizedDescriptionKey: "Could not decode chart data"])
         }
         
-        let title = parseMaidataTitle(from: chartString, fallbackID: downloadItem.id)
+        let title = parseMNTitle(from: chartString, fallbackID: downloadItem.id)
         
         // Update the title once we have it
         await MainActor.run {
@@ -199,12 +199,12 @@ class MaidataDownloader: ObservableObject {
         do {
             try fileManager.createDirectory(at: titleDirectory, withIntermediateDirectories: true, attributes: nil)
         } catch {
-            throw NSError(domain: "MaidataNetCompanion", code: 4, userInfo: [NSLocalizedDescriptionKey: "Could not create directory: \(error)"])
+            throw NSError(domain: "MajdataNetCompanion", code: 4, userInfo: [NSLocalizedDescriptionKey: "Could not create directory: \(error)"])
         }
         
         // Create async tasks for each download
         async let downloadTasks = withThrowingTaskGroup(of: Void.self) { group in
-            for fileType in [MaidataFileType.track, .chart, .image, .video] {
+            for fileType in [MNFileType.track, .chart, .image, .video] {
                 group.addTask {
                     // Download the file
                     let tempFileURL = try await self.downloadFile(id: downloadItem.id, fileType: fileType, downloadItem: downloadItem)
@@ -241,7 +241,7 @@ class MaidataDownloader: ObservableObject {
         }
         
         // Create a temporary download item with just the ID
-        let downloadItem = MaidataDownloadItem(id: id, title: "Loading...")
+        let downloadItem = MNDownloadItem(id: id, title: "Loading...")
         
         // Add to queue
         await MainActor.run {

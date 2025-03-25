@@ -1,6 +1,6 @@
 //
-//  MaidataNetCompanionApp.swift
-//  MaidataNetCompanion
+//  MajdataNetCompanionApp.swift
+//  MajdataNetCompanion
 //
 //  Created by Galvin on 2025/03/25.
 //
@@ -10,7 +10,7 @@ import SwiftData
 import SwiftUI
 
 @main
-struct MaidataNetCompanionApp: App {
+struct MajdataNetCompanionApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
