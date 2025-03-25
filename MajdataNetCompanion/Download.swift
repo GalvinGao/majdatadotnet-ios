@@ -44,7 +44,11 @@ enum MNFileType: String {
     }
 }
 
-class MNDownloadItem: ObservableObject, Identifiable {
+class MNDownloadItem: ObservableObject, Identifiable, Equatable {
+    static func == (lhs: MNDownloadItem, rhs: MNDownloadItem) -> Bool {
+        lhs.id == rhs.id
+    }
+    
     let id: String
     @Published var title: String
     @Published var status: DownloadStatus = .queued
